@@ -6,7 +6,7 @@
 
         //NewLINQMethods.Demonstrate();
 
-        //Person.Demonstrate();
+        //Employee.Demonstrate();
 
         Library.Demonstrate();
     }

@@ -1,4 +1,4 @@
-﻿public class Person
+﻿public class Employee
 {
     private string _name;
     public string Name
@@ -25,7 +25,7 @@
 
     public static void Demonstrate()
     {
-        var person = new Person();
+        var person = new Employee();
         person.Name = "John Doe";
         person.Age = 30;
 
