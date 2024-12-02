@@ -1,12 +1,18 @@
-﻿internal class ParamsExpansionDemo
+﻿using System.Runtime.CompilerServices;
+
+internal class ParamsExpansionDemo
 {
-    // Before C# 13, the params keyword allowed only arrays.
+    // Before C# 13
     public static void WriteNumbersCount(params int[] numbers)
         => Console.WriteLine(numbers.Length);
 
-    // In C# 13, the params keyword now supports collections implementing IEnumerable<T>.
-    // This allows for more flexible method calls with different collection types.
+    // In C# 13
+    [OverloadResolutionPriority(1)]
     public static void WriteNumbersCount(params IEnumerable<int> numbers) =>
+        Console.WriteLine(numbers.Count());
+
+    [OverloadResolutionPriority(2)]
+    public static void WriteNumbersCount(params List<int> numbers) =>
         Console.WriteLine(numbers.Count());
 
     public static void WriteItemsCount<T>(params T[] items) =>
@@ -14,8 +20,6 @@
 
     public static void Demonstrate()
     {
-        WriteNumbersCount(1, 2, 3, 4, 5);
-
         List<int> numbersList = new() { 1, 2, 3, 4, 5 };
         WriteNumbersCount(numbersList);
 

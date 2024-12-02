@@ -1,48 +1,6 @@
-﻿public partial class Library
+﻿
+public static class PartialProperties
 {
-    public partial string? LibraryName { get; set; }
-    public partial string this[int index] { get; set; }
-}
-
-public partial class Library
-{
-    private string? _libraryName;
-    public partial string? LibraryName
-    {
-        get => _libraryName;
-        set => _libraryName = value;
-    }
-
-    private List<string> _books = new List<string>();
-    public partial string this[int index]
-    {
-        get => index >= 0 && index < _books.Count ? _books[index] : "Book not found";
-        set
-        {
-            if (index >= 0 && index < _books.Count)
-            {
-                _books[index] = value;
-            }
-            else if (index == _books.Count)
-            {
-                _books.Add(value);
-            }
-        }
-    }
-
-    public void AddBook(string book)
-    {
-        _books.Add(book);
-    }
-
-    public void ListBooks()
-    {
-        for (int i = 0; i < _books.Count; i++)
-        {
-            Console.WriteLine($"{i}: {_books[i]}");
-        }
-    }
-
     public static void Demonstrate()
     {
         Library library = new Library();
@@ -62,5 +20,41 @@ public partial class Library
 
         library[3] = "Moby Dick";
         library.ListBooks();
+    }
+}
+
+public partial class Library
+{
+    public partial string LibraryName { get; set; }
+    public partial string this[int index] { get; set; }
+}
+
+public partial class Library
+{
+    public partial string LibraryName
+    {
+        get => field;
+        set => field = value;
+    }
+
+    private List<string> _books = new List<string>();
+    public partial string this[int index]
+    {
+        get => index >= 0 && index < _books.Count ? _books[index] : "Book not found";
+        set
+        {
+            if (index >= 0 && index < _books.Count)
+                _books[index] = value;
+            else if (index == _books.Count)
+                _books.Add(value);
+        }
+    }
+
+    public void AddBook(string book) => _books.Add(book);
+
+    public void ListBooks()
+    {
+        for (int i = 0; i < _books.Count; i++)
+            Console.WriteLine($"{i}: {_books[i]}");
     }
 }

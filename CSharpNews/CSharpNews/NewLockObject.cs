@@ -1,17 +1,8 @@
-﻿public class CounterWithoutLock
+﻿public static class NewLockObject
 {
-    private int _count = 0;
-
-    public void Increment() => _count++;
-
-
-    public int GetCount() => _count;
-
-    //When multiple tasks try to increment the same variable (_count) at the same time, they can interfere with each other.
-    //This means some increments might be lost, so the final count could be lower than expected.
     public static void Demonstrate()
     {
-        CounterWithoutLock counter = new CounterWithoutLock();
+        CounterWithNewLock counter = new CounterWithNewLock();
         const int taskCount = 1000;
         Task[] tasks = new Task[taskCount];
         for (int i = 0; i < taskCount; i++)
@@ -20,8 +11,16 @@
         Console.WriteLine("Final count: " + counter.GetCount());
     }
 }
+public class CounterWithoutLock
+{
+    private int _count = 0;
 
-public class CounterWithLock
+    public void Increment() => _count++;
+
+    public int GetCount() => _count;
+}
+
+public class CounterWithOldLock
 {
     private int _count = 0;
     private readonly object _lock = new object();
@@ -40,15 +39,26 @@ public class CounterWithLock
             return _count;
         }
     }
+}
 
-    public static void Demonstrate()
+public class CounterWithNewLock
+{
+    private int _count = 0;
+    private readonly Lock _lock = new Lock();
+
+    public void Increment()
     {
-        CounterWithLock counter = new CounterWithLock();
-        const int taskCount = 1000;
-        Task[] tasks = new Task[taskCount];
-        for (int i = 0; i < taskCount; i++)
-            tasks[i] = Task.Run(counter.Increment);
-        Task.WaitAll(tasks);
-        Console.WriteLine("Final count: " + counter.GetCount());
+        using (_lock.EnterScope())
+        {
+            _count++;
+        }
+    }
+
+    public int GetCount()
+    {
+        using (_lock.EnterScope())
+        {
+            return _count;
+        }
     }
 }

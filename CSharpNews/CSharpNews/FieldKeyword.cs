@@ -1,4 +1,17 @@
-﻿public class Employee
+﻿public static class FieldKeyword
+{
+    public static void Demonstrate()
+    {
+        var person = new Employee();
+        person.Name = "John Doe";
+        person.Age = 30;
+
+        Console.WriteLine($"Name: {person.Name}");
+        Console.WriteLine($"Age: {person.Age}");
+    }
+}
+
+public class Employee
 {
     private string _name;
     public string Name
@@ -21,15 +34,5 @@
                 throw new ArgumentOutOfRangeException(nameof(value), "The value must not be negative");
             field = value;
         }
-    }
-
-    public static void Demonstrate()
-    {
-        var person = new Employee();
-        person.Name = "John Doe";
-        person.Age = 30;
-
-        Console.WriteLine($"Name: {person.Name}");
-        Console.WriteLine($"Age: {person.Age}");
     }
 }

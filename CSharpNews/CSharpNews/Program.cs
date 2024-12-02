@@ -2,15 +2,15 @@
 {
     static void Main()
     {
-        //ParamsExpansionDemo.Demonstrate();
+        ParamsExpansionDemo.Demonstrate();
 
         //NewLINQMethods.Demonstrate();
 
-        //Employee.Demonstrate();
+        //FieldKeyword.Demonstrate();
 
-        //Library.Demonstrate();
+        //NewLockObject.Demonstrate();
 
-        CounterWithLock.Demonstrate();
+        //PartialProperties.Demonstrate();
     }
 }
 

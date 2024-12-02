@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35521.163 d17.12
+VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNews", "CSharpNews\CSharpNews.csproj", "{6E2E46C3-1728-43E5-BB89-164DFBB225D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLockObjectBenchmark", "NewLockObjectBenchmark\NewLockObjectBenchmark.csproj", "{70D82CDC-83C9-4538-BDD0-4D249304A44F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6E2E46C3-1728-43E5-BB89-164DFBB225D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E2E46C3-1728-43E5-BB89-164DFBB225D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E2E46C3-1728-43E5-BB89-164DFBB225D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D82CDC-83C9-4538-BDD0-4D249304A44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D82CDC-83C9-4538-BDD0-4D249304A44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D82CDC-83C9-4538-BDD0-4D249304A44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D82CDC-83C9-4538-BDD0-4D249304A44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
