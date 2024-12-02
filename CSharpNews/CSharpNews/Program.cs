@@ -8,7 +8,9 @@
 
         //Employee.Demonstrate();
 
-        Library.Demonstrate();
+        //Library.Demonstrate();
+
+        CounterWithLock.Demonstrate();
     }
 }
 
