@@ -47,10 +47,12 @@ public class CounterWithNewLock
     }
 }
 
+[MemoryDiagnoser]
 public class BenchmarkTest
 {
     private CounterWithOldLock _counterOldLock;
     private CounterWithNewLock _counterNewLock;
+    const int totalIterations = 1000000;
 
     [GlobalSetup]
     public void Setup()
@@ -60,48 +62,20 @@ public class BenchmarkTest
     }
 
     [Benchmark]
-    [Arguments(1)] // Single task
-    [Arguments(4)] // 4 tasks
-    [Arguments(8)] // 8 tasks
-    [Arguments(16)] // 16 tasks
-    public async Task TestOldLock(int tasks)
+    public void TestOldLock()
     {
-        var taskList = new Task[tasks];
-        for (int i = 0; i < tasks; i++)
+        for (int i = 0; i < totalIterations; i++)
         {
-            taskList[i] = Task.Run(() =>
-            {
-                for (int j = 0; j < 10000 / tasks; j++)
-                {
-                    _counterOldLock.Increment();
-                }
-            });
+            _counterOldLock.Increment();
         }
-
-        // Wait for all tasks to complete
-        await Task.WhenAll(taskList);
     }
 
     [Benchmark]
-    [Arguments(1)] // Single task
-    [Arguments(4)] // 4 tasks
-    [Arguments(8)] // 8 tasks
-    [Arguments(16)] // 16 tasks
-    public async Task TestNewLock(int tasks)
+    public void TestNewLock()
     {
-        var taskList = new Task[tasks];
-        for (int i = 0; i < tasks; i++)
+        for (int i = 0; i < totalIterations; i++)
         {
-            taskList[i] = Task.Run(() =>
-            {
-                for (int j = 0; j < 10000 / tasks; j++)
-                {
-                    _counterNewLock.Increment();
-                }
-            });
+            _counterNewLock.Increment();
         }
-
-        // Wait for all tasks to complete
-        await Task.WhenAll(taskList);
     }
 }
