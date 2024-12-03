@@ -2,7 +2,7 @@
 {
     public static void Demonstrate()
     {
-        CounterWithNewLock counter = new CounterWithNewLock();
+        Counter counter = new Counter();
         const int taskCount = 1000;
         Task[] tasks = new Task[taskCount];
         for (int i = 0; i < taskCount; i++)
@@ -41,7 +41,7 @@ public class CounterWithOldLock
     }
 }
 
-public class CounterWithNewLock
+public class Counter
 {
     private int _count = 0;
     private readonly Lock _lock = new Lock();

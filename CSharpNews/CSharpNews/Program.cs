@@ -2,7 +2,7 @@
 {
     static void Main()
     {
-        ParamsExpansionDemo.Demonstrate();
+        //ParamsExpansionDemo.Demonstrate();
 
         //NewLINQMethods.Demonstrate();
 
@@ -10,7 +10,7 @@
 
         //NewLockObject.Demonstrate();
 
-        //PartialProperties.Demonstrate();
+        PartialProperties.Demonstrate();
     }
 }
 

@@ -20,19 +20,21 @@ public class Employee
         set
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Name cannot be empty or null", nameof(value));
+                throw new ArgumentException("Name cannot be empty or null");
             _name = value;
         }
     }
 
-    public int Age
-    {
-        get => field;
-        set
-        {
-            if (value < 0)
-                throw new ArgumentOutOfRangeException(nameof(value), "The value must not be negative");
-            field = value;
-        }
-    }
+    public int Age { get; set; }
+
+    //public int Age
+    //{
+    //    get => field;
+    //    set
+    //    {
+    //        if (value < 0)
+    //            throw new ArgumentOutOfRangeException("The value must not be negative");
+    //        field = value;
+    //    }
+    //}
 }
