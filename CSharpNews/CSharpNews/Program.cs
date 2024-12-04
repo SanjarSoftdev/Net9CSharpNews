@@ -2,13 +2,13 @@
 {
     static void Main()
     {
-        //ParamsExpansionDemo.Demonstrate();
+        ParamsExpansionDemo.Demonstrate();
 
-        //NewLINQMethods.Demonstrate();
+        NewLINQMethods.Demonstrate();
 
-        //FieldKeyword.Demonstrate();
+        FieldKeyword.Demonstrate();
 
-        //NewLockObject.Demonstrate();
+        NewLockObject.Demonstrate();
 
         PartialProperties.Demonstrate();
     }

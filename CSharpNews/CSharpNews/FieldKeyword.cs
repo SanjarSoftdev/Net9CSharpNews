@@ -25,16 +25,14 @@ public class Employee
         }
     }
 
-    public int Age { get; set; }
-
-    //public int Age
-    //{
-    //    get => field;
-    //    set
-    //    {
-    //        if (value < 0)
-    //            throw new ArgumentOutOfRangeException("The value must not be negative");
-    //        field = value;
-    //    }
-    //}
+    public int Age
+    {
+        get => field;
+        set
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException("The value must not be negative");
+            field = value;
+        }
+    }
 }
