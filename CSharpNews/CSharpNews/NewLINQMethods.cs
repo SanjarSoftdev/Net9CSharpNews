@@ -1,79 +1,58 @@
 ﻿internal class NewLINQMethods
 {
-    static (string fullName, string department, int vacationDaysLeft)[] employees =
-    [
-        ("John Doe", "IT", 12),
-        ("Jane Peterson", "Marketing", 18),
-        ("John Smith", "IT", 28),
-        ("Mary Johnson", "HR", 17),
-        ("Nick Carson", "Marketing", 5),
-        ("Mary Morgan", "HR", 9)
-    ];
 
-    public static void CountBy()
+
+    public static void LinkMethods()
     {
+        (string Name, string Dept, int Salary)[] employees = [
+            ("Mary", "Accounting", 80000 ),
+            ("Jean", "Accounting", 140000 ),
+            ("Bill", "Accounting", 90000 ),
+            ("Suzy", "IT", 125000 ),
+            ("Mike", "IT", 160000 )
+        ];
+
         var departmentCounts = employees
-            .GroupBy(p => p.Item2)
+            .GroupBy(p => p.Dept)
             .ToDictionary(group => group.Key, group => group.Count())
             .AsEnumerable();
 
         Console.WriteLine();
-        foreach (var entry in departmentCounts)
-            Console.WriteLine($"Department {entry.Key} appears {entry.Value} times");
+        foreach (var group in departmentCounts)
+            Console.WriteLine($"Department {group.Key} appears {group.Value} times");
 
-        departmentCounts = employees.CountBy(p => p.Item2);
+        departmentCounts = employees.CountBy(p => p.Dept);
 
         Console.WriteLine();
-        foreach (var entry in departmentCounts)
-            Console.WriteLine($"Department {entry.Key} appears {entry.Value} times");
-    }
+        foreach (var group in departmentCounts)
+            Console.WriteLine($"Department {group.Key} appears {group.Value} times");
 
-    public static void AggregateBy()
-    {
         // Before
-        var departmentVacationDaysLeft = employees
-            .GroupBy(emp => emp.Item2)
-            .ToDictionary(group => group.Key, group => group.Sum(emp => emp.Item3))
+        var totalSalaryByDept = employees
+            .GroupBy(emp => emp.Dept)
+            .ToDictionary(group => group.Key, group => group.Sum(emp => emp.Salary))
             .AsEnumerable();
 
         Console.WriteLine();
-        foreach (var entry in departmentVacationDaysLeft)
-            Console.WriteLine($"Department {entry.Key} has a total of {entry.Value} vacation days left");
+        foreach (var group in totalSalaryByDept)
+            Console.WriteLine($"Department: {group.Key}, Total Salary: {group.Value}");
 
         // In C# 13
-        departmentVacationDaysLeft = employees.AggregateBy(emp => emp.Item2, 0, (acc, emp) => acc + emp.Item3);
+        var totalSalaryByDept1 = employees.AggregateBy(emp => emp.Dept, 0, (total, emp) => total + emp.Salary);
         Console.WriteLine();
-        foreach (var entry in departmentVacationDaysLeft)
-            Console.WriteLine($"Department {entry.Key} has a total of {entry.Value} vacation days left");
-    }
+        foreach (var group in totalSalaryByDept1)
+            Console.WriteLine($"Department: {group.Key}, Total Salary: {group.Value}");
 
-    public static void Index()
-    {
         // Before
-        var indexedEmployees = employees.Select((m, i) => (i, m));
+        var employeesWithIndex = employees.Select((emp, i) => (i, emp));
         Console.WriteLine();
-        foreach (var (index, employee) in indexedEmployees)
+        foreach (var (index, employee) in employeesWithIndex)
             Console.WriteLine($"Employee {index}: {employee}");
 
         // In C# 13
-        indexedEmployees = employees.Index();
+        employeesWithIndex = employees.Index();
         Console.WriteLine();
-        foreach (var (index, employee) in indexedEmployees)
+        foreach (var (index, employee) in employeesWithIndex)
             Console.WriteLine($"Employee {index}: {employee}");
-    }
-
-    public static void Demonstrate()
-    {
-        Console.WriteLine("CountBy Method:");
-        CountBy();
-        Console.WriteLine();
-
-        Console.WriteLine("AggregateBy Method:");
-        AggregateBy();
-        Console.WriteLine();
-
-        Console.WriteLine("Index Method:");
-        Index();
-        Console.WriteLine();
     }
 }
