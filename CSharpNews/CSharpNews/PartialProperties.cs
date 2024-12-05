@@ -1,4 +1,6 @@
 ﻿
+using System.Text.RegularExpressions;
+
 public static class PartialProperties
 {
     public static void Demonstrate()
@@ -54,4 +56,13 @@ public partial class Library
                 _books.Add(value);
         }
     }
+}
+
+public partial class Foo
+{
+    [GeneratedRegex("abc|def")]
+    private static partial Regex AbcRegex { get; }
+
+    public bool IsMatchAbc(string text)
+        => AbcRegex.IsMatch(text);
 }
