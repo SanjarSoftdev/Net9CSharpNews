@@ -54,11 +54,5 @@ public class Counter
         }
     }
 
-    public int GetCount()
-    {
-        using (_lock.EnterScope())
-        {
-            return _count;
-        }
-    }
+    public int GetCount() => _count;
 }

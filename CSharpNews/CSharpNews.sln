@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNews", "CSharpNews\CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratedRegexBenchmark", "GeneratedRegexBenchmark\GeneratedRegexBenchmark.csproj", "{058DF013-1B47-489E-AB6B-58B6A6EEDD76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLockObjectBenchmark", "NewLockObjectBenchmark\NewLockObjectBenchmark.csproj", "{7A8553C6-D998-4438-ACF7-5FB63EBC4F8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{058DF013-1B47-489E-AB6B-58B6A6EEDD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058DF013-1B47-489E-AB6B-58B6A6EEDD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058DF013-1B47-489E-AB6B-58B6A6EEDD76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8553C6-D998-4438-ACF7-5FB63EBC4F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8553C6-D998-4438-ACF7-5FB63EBC4F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8553C6-D998-4438-ACF7-5FB63EBC4F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8553C6-D998-4438-ACF7-5FB63EBC4F8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
