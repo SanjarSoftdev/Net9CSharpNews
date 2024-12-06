@@ -15,7 +15,7 @@ public partial class EmailValidatorGenerated
 
 public class EmailValidatorStatic
 {
-    private static readonly Regex StaticRegex = new(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", RegexOptions.Compiled);
+    private static readonly Regex StaticRegex = new(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 
     public bool IsValidEmail(string email) => StaticRegex.IsMatch(email);
 }
