@@ -5,7 +5,7 @@ class Program
 {
     static void Main()
     {
-        Printer.Demonstrate();
+        //Printer.Demonstrate();
 
         //ParamsExpansionDemo.Demonstrate();
 
@@ -30,11 +30,10 @@ public static class Printer
     public static void Print(ReadOnlySpan<char> text)
         => Console.WriteLine($"Printing ReadOnlySpan: {text}");
 
-    [OverloadResolutionPriority(1)]
     public static void PrintNumbersCount(params int[] numbers)
         => Console.WriteLine(numbers.Length);
 
-    [OverloadResolutionPriority(2)]
+    [OverloadResolutionPriority(1)]
     public static void PrintNumbersCount(params List<int> numbers)
         => Console.WriteLine(numbers.Count());
 
@@ -43,5 +42,20 @@ public static class Printer
         Print("Hello, World!");
 
         PrintNumbersCount(1, 2, 3, 4);
+    }
+}
+
+public static class Math
+{
+    public static int Sum(int x, int y)
+        => x + y;
+
+    [OverloadResolutionPriority(1)]
+    public static int Sum(params int[] numbers)
+        => numbers.Sum();
+
+    public static void Demonstrate()
+    {
+        Sum(1, 2);
     }
 }

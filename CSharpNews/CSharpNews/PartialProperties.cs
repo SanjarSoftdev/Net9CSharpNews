@@ -1,4 +1,5 @@
 ﻿
+using System.CodeDom.Compiler;
 using System.Text.RegularExpressions;
 
 public static class PartialProperties
@@ -58,11 +59,13 @@ public partial class Library
     }
 }
 
-public partial class Foo
+public partial class EmailValidator
 {
-    [GeneratedRegex("abc|def")]
-    private static partial Regex AbcRegex { get; }
+    [GeneratedRegex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]
+    private static partial Regex EmailRegex();
 
-    public bool IsMatchAbc(string text)
-        => AbcRegex.IsMatch(text);
+    public bool IsValidEmail(string email)
+    {
+        return EmailRegex().IsMatch(email);
+    }
 }
