@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Printer.Demonstrate();
+        //Printer.Demonstrate();
 
         //ParamsExpansionDemo.Demonstrate();
 
@@ -13,7 +13,7 @@ class Program
 
         //FieldKeyword.Demonstrate();
 
-        //NewLockObject.Demonstrate();
+        NewLockObject.Demonstrate();
 
         //PartialProperties.Demonstrate();
     }
